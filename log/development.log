@@ -3492,3 +3492,66 @@ Processing by ArticlesController#show as HTML
 Completed 200 OK in 123ms (Views: 113.9ms | ActiveRecord: 2.2ms)
 
 
+Started GET "/articles" for 127.0.0.1 at 2020-07-20 16:10:34 -0500
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/emilio/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (66.8ms)
+Completed 200 OK in 1008ms (Views: 900.5ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/articles/12" for 127.0.0.1 at 2020-07-20 16:10:37 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8
+  Rendering articles/show.html.erb within layouts/application
+  Rendered comments/_form.html.erb (22.4ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 12]]
+  ↳ app/views/articles/show.html.erb:6
+  Rendered collection of articles/_comment.html.erb [0 times] (0.0ms)
+  Rendered articles/show.html.erb within layouts/application (84.8ms)
+Completed 200 OK in 206ms (Views: 141.0ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/articles/12/comments" for 127.0.0.1 at 2020-07-20 16:10:57 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AJfKINT88tLG4IYyXBwH9ax5qlr/irsv5RnaleET5FNh4BVmUU8rFOXkQavENFstVrFJb3YBQex4qATYiaLxUA==", "comment"=>{"author_name"=>"Emilio", "body"=>"This is Emilio's comment."}, "commit"=>"Submit", "article_id"=>"12"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (2.1ms)[0m  [1m[32mINSERT INTO "comments" ("author_name", "body", "article_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["author_name", "Emilio"], ["body", "This is Emilio's comment."], ["article_id", 12], ["created_at", "2020-07-20 21:10:57.952534"], ["updated_at", "2020-07-20 21:10:57.952534"]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://localhost:3000/articles/12
+Completed 302 Found in 61ms (ActiveRecord: 12.6ms)
+
+
+Started GET "/articles/12" for 127.0.0.1 at 2020-07-20 16:10:57 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8
+  Rendering articles/show.html.erb within layouts/application
+  Rendered comments/_form.html.erb (2.5ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 12]]
+  ↳ app/views/articles/show.html.erb:6
+  Rendered collection of articles/_comment.html.erb [1 times] (0.8ms)
+  Rendered articles/show.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 107ms (Views: 104.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2020-07-20 16:11:04 -0500
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 87ms (Views: 84.9ms | ActiveRecord: 0.4ms)
+
+
