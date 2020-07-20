@@ -1786,3 +1786,12 @@ Processing by ArticlesController#new as HTML
 Completed 200 OK in 268ms (Views: 232.3ms | ActiveRecord: 1.9ms)
 
 
+Started GET "/articles/new" for ::1 at 2020-07-20 13:55:52 -0400
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/brunagobi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (52.2ms)
+Completed 200 OK in 929ms (Views: 901.4ms | ActiveRecord: 0.8ms)
+
+
