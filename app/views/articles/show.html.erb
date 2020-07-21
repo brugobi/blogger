@@ -6,6 +6,14 @@
   <% end %>
 </p>
 
+
+<p>  
+  <% if @article.image.exists? %>
+      <%= image_tag @article.image.url(:medium) %><br/>
+  <% end %>
+</p>
+
+<br/>
 <p><%= @article.body %></p>
 <%= render partial: 'comments/form' %>
 <%= link_to "<< Back to Articles List", articles_path %>
